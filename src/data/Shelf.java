@@ -25,7 +25,7 @@ public class Shelf {
         this.color = color;
         this.label = label;
     }
-
+    
     public void inputAStudent() {
         String id, name;
         int yob;
@@ -49,9 +49,27 @@ public class Shelf {
     }
     
     public void printStudentList() {
-        System.out.println("The student list");
+        System.out.println("There is/are " + count + " student(s) in the list");
         for (int i = 0; i < count; i++) {
             ds[i].showProfile();
         }
+    }
+    
+    public void searchAStudent() {
+        //đưa id vào từ bàn phím, tìm sv theo id
+        //for từ đầu đến count của mảng, lỗi từng sv ra hỏi , mã số ku là gì
+        //so sánh với id gõ vào, == nhau thì done, tìm ra sv ở vị trí i
+        String id;
+        System.out.print("Input student id that you want to search: ");
+        id = sc.nextLine();
+        for (int i = 0; i < count; i++) {
+            if(ds[i].getId().equalsIgnoreCase(id)) {
+                System.out.println("Student found!!! Here she/he is");
+                ds[i].showProfile();
+                return; //thoát hàm luôn, vì mã số sv duy nhất, thấy rồi
+                //k con ai để for thêm làm gì nữa
+            }
+        }
+        System.out.println("Student not found!!!");
     }
 }
